@@ -1,0 +1,169 @@
+/* 极简纯文字风格：白底黑字，无装饰 */
+
+:root {
+    --text: #111;
+    --muted: #888;
+    --accent: #1a73e8;
+    --max-width: 42rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    line-height: 1.7;
+}
+
+a {
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-color: var(--muted);
+    text-underline-offset: 3px;
+}
+
+a:hover {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+}
+
+/* 容器与间距 */
+.site-header,
+main,
+footer {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.brand {
+    font-weight: 700;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+/* 简介区 */
+.about {
+    padding: 4rem 0 3rem;
+    text-align: center;
+}
+
+.avatar {
+    width: 5rem;
+    height: 5rem;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    border: 1px solid var(--text);
+    border-radius: 50%;
+}
+
+.about h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.tagline {
+    margin: .5rem 0 0;
+    color: var(--muted);
+}
+
+/* 内容区通用标题 */
+h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: .3rem;
+    border-bottom: 1px solid #eee;
+}
+
+/* 文章 / 链接列表 */
+.post-list,
+.link-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.post-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: .3rem 0;
+    flex-wrap: wrap;
+}
+
+.post-date {
+    color: var(--muted);
+    font-size: .85rem;
+    white-space: nowrap;
+}
+
+.draft span:first-child {
+    color: var(--muted);
+}
+
+.draft .post-date {
+    font-style: italic;
+}
+
+.link-list {
+    display: flex;
+    gap: 2rem;
+}
+
+footer {
+    margin-top: 4rem;
+    padding-bottom: 2rem;
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+footer p {
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+}
+
+/* 文章页 */
+.back {
+    font-size: .85rem;
+}
+
+.article h1 {
+    font-size: 1.6rem;
+    margin: 2.5rem 0 .3rem;
+}
+
+.post-meta {
+    color: var(--muted);
+    font-size: .85rem;
+    margin: 0 0 2rem;
+}

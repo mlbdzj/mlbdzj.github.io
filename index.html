@@ -1,11 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8">
-    <title>我的 GitHub 博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>mlbdzj 的博客</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>🎉 你好，世界！</h1>
-    <p>这是我的第一个 GitHub Pages 博客。</p>
+    <header class="site-header">
+        <a class="brand" href="index.html">mlbdzj</a>
+        <nav>
+            <a href="#about">简介</a>
+            <a href="#posts">文章</a>
+            <a href="#links">链接</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="about">
+            <div class="avatar" aria-hidden="true">m</div>
+            <h1>mlbdzj</h1>
+            <p class="tagline">用文字记录学习与生活的工程师。</p>
+        </section>
+
+        <section id="posts">
+            <h2>最近文章</h2>
+            <ul class="post-list">
+                <li>
+                    <a href="posts/sample-post.html">第一篇文章：博客搭建好了</a>
+                    <span class="post-date">2026-09-06</span>
+                </li>
+                <li class="draft">
+                    <span>即将发布：敬请期待</span>
+                    <span class="post-date">计划中</span>
+                </li>
+            </ul>
+        </section>
+
+        <section id="links">
+            <h2>链接</h2>
+            <ul class="link-list">
+                <li><a href="https://github.com/mlbdzj">GitHub</a></li>
+                <li><a href="mailto:yourname@example.com">邮箱</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© <span id="year">2026</span> mlbdzj · 建站于 2026 · 由 GitHub Pages 托管</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
