@@ -127,12 +127,8 @@ h2 {
     white-space: nowrap;
 }
 
-.draft span:first-child {
+.loading {
     color: var(--muted);
-}
-
-.draft .post-date {
-    font-style: italic;
 }
 
 .link-list {

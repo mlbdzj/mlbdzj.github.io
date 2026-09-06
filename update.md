@@ -4,11 +4,11 @@
 
 1. 复制 `posts/_template.md` 为 `posts/短名.md`，填好 `title` / `date`，正文写 markdown（不写一级标题）。
 2. 图片放 `assets/img/`，md 里用 `![说明](assets/img/xxx.png)`。
-3. 在 `index.html` 「最近文章」列表最上方插入一行：
-   `<li><a href="post.html?file=短名">标题</a><span class="post-date">日期</span></li>`
-4. 在本文件末尾追加本次改动说明。
-5. `git add -A` → 规范 commit → `git push`。
-6. 验证：`https://mlbdzj.github.io/post.html?file=短名`
+3. 在本文件末尾追加本次改动说明。
+4. `git add -A` → 规范 commit → `git push`。
+5. 验证：`https://mlbdzj.github.io/post.html?file=短名`
+
+首页文章列表由脚本自动生成，**无需再手动编辑 `index.html`**（新文章 push 后首页即出现）。
 
 ---
 
@@ -61,3 +61,11 @@ fetch 读取本地 md 需要 HTTP 服务，不能用 file:// 双击打开，需�
 - `posts/learn-javascript.md`：var/let/const（表格、代码块、行内代码、引用）。
 - `posts/learn-go.md`：Go 入门与 goroutine（代码块、有序列表、引用）。
 - `index.html` 文章列表已加入以上 3 篇入口。
+
+## 2026-09-06 首页文章列表自动生成
+
+- `index.html` 文章列表改为由 JS 自动生成：通过 GitHub contents API 列出 `posts/` 下的 `.md`（跳过 `_` 开头的模板文件），再从本站读取每篇 front-matter 的 `title` / `date`，按日期倒序渲染。
+- 列表结果缓存于 `localStorage`（10 分钟），减少 API 调用；加载失败时显示提示，不会白屏。
+- 以后新增文章只需 push md 文件，**首页自动出现，不再编辑 `index.html`**。
+- 移除手动列出的示例条目与「即将发布」占位行，清理对应的 `.draft` 样式。
+- 注意：首页文章列表依赖网络（GitHub API），需在联网状态下访问。
