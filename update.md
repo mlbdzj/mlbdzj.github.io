@@ -31,3 +31,7 @@ date: 2026-09-06
 
 ### 预览说明
 fetch 读取本地 md 需要 HTTP 服务，不能用 file:// 双击打开，需运行 `python -m http.server` 后访问 `http://localhost:8000/post.html?file=sample-post`。
+
+## 2026-09-06 修复 GitHub Pages 托管兼容性
+
+- 新增根目录空文件 `.nojekyll`：跳过 GitHub Pages 默认的 Jekyll 构建，确保 `posts/*.md` 以原始文件发布、前端 fetch 正常读取。
