@@ -10,6 +10,8 @@
 
 首页文章列表由脚本自动生成，**无需再手动编辑 `index.html`**（新文章 push 后首页即出现）。
 
+本仓库已启用 git 钩子：提交时自动运行 `tools/gen-index.js` 更新 `posts/index.json`。**新克隆仓库后需执行一次** `git config core.hooksPath .githooks`；若直接在 GitHub 网页新增/删除文章（不经本地钩子），需手动运行 `node tools/gen-index.js` 更新 `index.json` 再提交。
+
 ---
 
 ## 2026-09-06 完善博客主页（极简纯文字风格）
@@ -69,3 +71,12 @@ fetch 读取本地 md 需要 HTTP 服务，不能用 file:// 双击打开，需�
 - 以后新增文章只需 push md 文件，**首页自动出现，不再编辑 `index.html`**。
 - 移除手动列出的示例条目与「即将发布」占位行，清理对应的 `.draft` 样式。
 - 注意：首页文章列表依赖网络（GitHub API），需在联网状态下访问。
+
+## 2026-09-06 首页列表改为本地 index.json，不再依赖 GitHub API
+
+原因：部分网络环境下 `api.github.com` 不可用，首页出现「文章列表加载失败」。改为纯同源方案：
+
+- 新增 `tools/gen-index.js`：Node 脚本扫描 `posts/*.md`，解析 front-matter 生成 `posts/index.json`（按日期倒序）。
+- 新增 `.githooks/pre-commit`：每次提交前自动重跑上述脚本并暂存 `index.json`；仓库已配置 `core.hooksPath = .githooks`。
+- `index.html`：文章列表改为读取同源的 `posts/index.json`，移除 GitHub API 调用与 localStorage 缓存，逻辑大幅简化。
+- 新文章流程不变（加 md → 提交 → push），首页自动更新；无外网 API 依赖，加载更快。

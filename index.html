@@ -49,13 +49,10 @@
     <script>
         (function () {
             var ul = document.getElementById('post-list');
-            var repo = 'mlbdzj/mlbdzj.github.io';
-            var cacheKey = 'posts-cache';
-            var ttl = 10 * 60 * 1000;
-            var cache = null;
-            try { cache = JSON.parse(localStorage.getItem(cacheKey)); } catch (e) {}
 
-            function stem(name) { return name.replace(/\.md$/, ''); }
+            function esc(s) {
+                return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            }
 
             function render(items) {
                 if (!items.length) {
@@ -63,73 +60,19 @@
                     return;
                 }
                 ul.innerHTML = items.map(function (it) {
-                    return '<li><a href="post.html?file=' + stem(it.file) + '">' + it.title +
-                        '</a><span class="post-date">' + (it.date || '') + '</span></li>';
+                    return '<li><a href="post.html?file=' + esc(it.file) + '">' + esc(it.title) +
+                        '</a><span class="post-date">' + esc(it.date || '') + '</span></li>';
                 }).join('');
             }
 
-            function parseMeta(text) {
-                var meta = { title: '', date: '' };
-                if (text.indexOf('---') === 0) {
-                    var end = text.indexOf('\n---', 4);
-                    if (end > -1) {
-                        text.slice(4, end).split('\n').forEach(function (line) {
-                            var i = line.indexOf(':');
-                            if (i > -1) {
-                                meta[line.slice(0, i).trim()] = line.slice(i + 1).trim();
-                            }
-                        });
-                    }
-                }
-                return meta;
-            }
-
-            function readMeta(name) {
-                return fetch('posts/' + name).then(function (r) {
-                    return r.ok ? r.text() : '';
-                }).then(function (text) {
-                    var m = parseMeta(text);
-                    return { file: name, title: m.title || stem(name), date: m.date };
-                });
-            }
-
-            function listFromApi() {
-                return fetch('https://api.github.com/repos/' + repo + '/contents/posts')
-                    .then(function (r) {
-                        if (!r.ok) throw new Error('api');
-                        return r.json();
-                    })
-                    .then(function (files) {
-                        return files.filter(function (f) {
-                            return /\.md$/.test(f.name) && f.name.charAt(0) !== '_';
-                        }).map(function (f) { return f.name; });
-                    });
-            }
-
-            function withMeta(names) {
-                return Promise.all(names.map(readMeta)).then(function (items) {
-                    items.sort(function (a, b) { return (b.date || '').localeCompare(a.date || ''); });
-                    return items;
-                });
-            }
-
-            if (cache && Date.now() - cache.at < ttl) {
-                render(cache.items);
-            } else {
-                if (cache) {
-                    render(cache.items);
-                } else {
-                    ul.innerHTML = '<li class="loading">加载中…</li>';
-                }
-                listFromApi().then(withMeta).then(function (items) {
-                    render(items);
-                    try { localStorage.setItem(cacheKey, JSON.stringify({ at: Date.now(), items: items })); } catch (e) {}
-                }).catch(function () {
-                    if (!cache) {
-                        ul.innerHTML = '<li class="loading">文章列表加载失败，请刷新重试。</li>';
-                    }
-                });
-            }
+            fetch('posts/index.json').then(function (r) {
+                if (!r.ok) throw new Error();
+                return r.json();
+            }).then(function (data) {
+                render(data.items || []);
+            }).catch(function () {
+                ul.innerHTML = '<li class="loading">文章列表加载失败，请刷新重试。</li>';
+            });
         })();
     </script>
 </body>

@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-09-06",
+  "items": [
+    {
+      "file": "sample-post",
+      "title": "第一篇文章：博客搭建好了",
+      "date": "2026-09-06"
+    },
+    {
+      "file": "learn-python",
+      "title": "Python 入门笔记：基础语法与常见坑",
+      "date": "2026-09-05"
+    },
+    {
+      "file": "learn-javascript",
+      "title": "JavaScript 学习：var / let / const 到底怎么选",
+      "date": "2026-09-04"
+    },
+    {
+      "file": "learn-go",
+      "title": "Go 语言学习：从 Hello 到 goroutine",
+      "date": "2026-09-03"
+    }
+  ]
+}
