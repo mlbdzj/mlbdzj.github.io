@@ -1,5 +1,17 @@
 # 更新记录
 
+## 写新文章固定清单
+
+1. 复制 `posts/_template.md` 为 `posts/短名.md`，填好 `title` / `date`，正文写 markdown（不写一级标题）。
+2. 图片放 `assets/img/`，md 里用 `![说明](assets/img/xxx.png)`。
+3. 在 `index.html` 「最近文章」列表最上方插入一行：
+   `<li><a href="post.html?file=短名">标题</a><span class="post-date">日期</span></li>`
+4. 在本文件末尾追加本次改动说明。
+5. `git add -A` → 规范 commit → `git push`。
+6. 验证：`https://mlbdzj.github.io/post.html?file=短名`
+
+---
+
 ## 2026-09-06 完善博客主页（极简纯文字风格）
 
 - 重写 `index.html`：加入导航栏、个人简介（文字头像+昵称+一句话）、最近文章列表、社交链接、页脚。
@@ -35,3 +47,8 @@ fetch 读取本地 md 需要 HTTP 服务，不能用 file:// 双击打开，需�
 ## 2026-09-06 修复 GitHub Pages 托管兼容性
 
 - 新增根目录空文件 `.nojekyll`：跳过 GitHub Pages 默认的 Jekyll 构建，确保 `posts/*.md` 以原始文件发布、前端 fetch 正常读取。
+
+## 2026-09-06 新增写作模板与固定清单
+
+- 新增 `posts/_template.md`：可复制的空文章模板（front-matter + 各类元素示例）。
+- `update.md` 顶部新增「写新文章固定清单」，汇总 6 步发布流程。
