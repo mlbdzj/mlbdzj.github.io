@@ -52,3 +52,12 @@ fetch 读取本地 md 需要 HTTP 服务，不能用 file:// 双击打开，需�
 
 - 新增 `posts/_template.md`：可复制的空文章模板（front-matter + 各类元素示例）。
 - `update.md` 顶部新增「写新文章固定清单」，汇总 6 步发布流程。
+
+## 2026-09-06 新增示例学习文档
+
+新增 3 篇编程语言学习示例文章，用于展示各类 markdown 语法的渲染效果：
+
+- `posts/learn-python.md`：Python 基础语法（嵌套列表、任务清单、代码块、引用、删除线）。
+- `posts/learn-javascript.md`：var/let/const（表格、代码块、行内代码、引用）。
+- `posts/learn-go.md`：Go 入门与 goroutine（代码块、有序列表、引用）。
+- `index.html` 文章列表已加入以上 3 篇入口。
