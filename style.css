@@ -167,3 +167,77 @@ footer p {
     font-size: .85rem;
     margin: 0 0 2rem;
 }
+
+/* markdown 渲染正文排版 */
+.article-body h1 {
+    font-size: 1.6rem;
+    margin: 2.5rem 0 .3rem;
+}
+
+.article-body h2 {
+    margin-top: 2.5rem;
+}
+
+.article-body h3 {
+    margin-top: 2rem;
+}
+
+.article-body p {
+    margin: 1rem 0;
+}
+
+.article-body ul,
+.article-body ol {
+    padding-left: 1.5rem;
+}
+
+.article-body li {
+    margin: .3rem 0;
+}
+
+.article-body blockquote {
+    margin: 1.5rem 0;
+    padding-left: 1rem;
+    border-left: 3px solid #ddd;
+    color: var(--muted);
+}
+
+.article-body img {
+    max-width: 100%;
+}
+
+.article-body code {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: .9em;
+    background: #f5f5f5;
+    padding: .1em .35em;
+}
+
+.article-body pre {
+    overflow-x: auto;
+    background: #f5f5f5;
+    padding: 1rem;
+}
+
+.article-body pre code {
+    background: none;
+    padding: 0;
+}
+
+.article-body hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 2rem 0;
+}
+
+.article-body table {
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.article-body th,
+.article-body td {
+    border: 1px solid #ddd;
+    padding: .3rem .8rem;
+    text-align: left;
+}
