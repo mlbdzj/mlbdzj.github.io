@@ -14,8 +14,8 @@ function App() {
         <aside className="sticky top-6 flex w-[260px] shrink-0 flex-col gap-5 max-md:static max-md:w-full">
           <ProfileCard
             avatar="/avatar.webp"
-            name="你的名字"
-            bio="这是一段个人简介"
+            name="mlbdzj"
+            bio="这是一个人"
           />
           <PostList posts={posts} activeId={activeId} onSelect={setActiveId} />
         </aside>
