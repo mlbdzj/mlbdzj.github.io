@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Clock from './components/Clock'
 import ProfileCard from './components/ProfileCard'
 import PostList from './components/PostList'
 import PostContent from './components/PostContent'
@@ -20,6 +21,7 @@ function App() {
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="mx-auto flex max-w-[1100px] items-start gap-6 max-md:flex-col">
         <aside className="sticky top-6 flex w-[260px] shrink-0 flex-col gap-5 max-md:static max-md:w-full">
+          <Clock />
           <ProfileCard {...profile} onClick={() => setView('about')} />
           <PostList
             posts={posts}
